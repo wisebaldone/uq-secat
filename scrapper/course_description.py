@@ -1,12 +1,13 @@
-import json
-
 class CourseDescription(object):
 
     def __init__(self, raw, description):
         self.course = raw[0]['COURSE_CD']
         self.description = description.split(":")[0]
         self.year = raw[0]['SEMESTER_DESCR'].split(",")[1].strip()
-        self.semester = int(raw[0]['SEMESTER_DESCR'].split(" ")[1].split(",")[0])
+        if "Summer" in raw[0]['SEMESTER_DESCR']:
+            self.semester = 3
+        else:
+            self.semester = int(raw[0]['SEMESTER_DESCR'].split(" ")[1].split(",")[0])
         self.q1 = QuestionDescription(raw[0:5])
         self.q2 = QuestionDescription(raw[5:10])
         self.q3 = QuestionDescription(raw[10:15])

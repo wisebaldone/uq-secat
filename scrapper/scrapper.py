@@ -61,10 +61,12 @@ for level1 in range(0, level1_num):
 
                 # Get Stats
                 raw = driver.execute_script("return courseSECATData;")
-                print(raw)
                 description = driver.execute_script("return title;")
-                course = CourseDescription(raw, description)
-
+                try:
+                    course = CourseDescription(raw, description)
+                except:
+                    print(description)
+                    continue
                 filename = "test/{}/{}/{}.json".format(course.course, course.year, course.semester)
                 try:
                     os.makedirs(os.path.dirname(filename))
