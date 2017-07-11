@@ -27,7 +27,7 @@ elements = top_level.find_elements_by_class_name("rtsLink")
 
 level1_num = len(elements)
 
-for level1 in range(0, level1_num):
+for level1 in range(8, level1_num):
     level1_bar = driver.find_element_by_class_name("rtsLevel1")
     level1_elements = level1_bar.find_elements_by_class_name("rtsLink")
     level1_elements[level1].click()
@@ -62,12 +62,16 @@ for level1 in range(0, level1_num):
                 # Get Stats
                 raw = driver.execute_script("return courseSECATData;")
                 description = driver.execute_script("return title;")
-                try:
-                    course = CourseDescription(raw, description)
-                except:
-                    print(description)
-                    continue
-                filename = "test/{}/{}/{}.json".format(course.course, course.year, course.semester)
+                enrolled = driver.find_element_by_id("lblNoEnrolled").text
+                responses = driver.find_element_by_id("lblNoResponses").text
+                rate = driver.find_element_by_id("lblRespRate").text
+                #try:
+
+                course = CourseDescription(raw, description, enrolled, responses, rate)
+                #except:
+                #    print(description)
+                #    continue
+                filename = "api/{}/{}/{}.json".format(course.course, course.year, course.semester)
                 try:
                     os.makedirs(os.path.dirname(filename))
                 except:
@@ -79,7 +83,8 @@ for level1 in range(0, level1_num):
                 f.close()
 
             lowest_counter += 1
-
+    # INTERNETS DODGY SO LETS DO A LETTER AT A TIME
+    #break
 time.sleep(5)
 print("Closing Web Browser")
 driver.close()
