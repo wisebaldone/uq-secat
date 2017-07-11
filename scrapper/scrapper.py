@@ -27,7 +27,7 @@ elements = top_level.find_elements_by_class_name("rtsLink")
 
 level1_num = len(elements)
 
-for level1 in range(8, level1_num):
+for level1 in range(13, level1_num):
     level1_bar = driver.find_element_by_class_name("rtsLevel1")
     level1_elements = level1_bar.find_elements_by_class_name("rtsLink")
     level1_elements[level1].click()
