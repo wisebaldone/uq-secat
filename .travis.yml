@@ -7,8 +7,7 @@ before_install:
   - cd website
 
 script:
-  - ls
-  - node_modules/webpack/webpack.js
+  - node_modules/webpack/bin/webpack.js
 
 deploy:
   provider: pages
