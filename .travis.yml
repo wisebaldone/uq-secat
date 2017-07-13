@@ -1,7 +1,9 @@
 language: node_js
 
-script:
+before_install:
   - cd website
+
+script:
   - node_modules/webpack/webpack.js
 
 deploy:
