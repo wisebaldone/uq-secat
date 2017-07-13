@@ -7,7 +7,7 @@ before_install:
   - cd website
 
 script:
-  - cd website
+  - ls
   - node_modules/webpack/webpack.js
 
 deploy:
