@@ -7,7 +7,7 @@ before_install:
   - cd website
 
 script:
-  - node_modules/webpack/bin/webpack.js
+  - yarn run build
 
 deploy:
   provider: pages
