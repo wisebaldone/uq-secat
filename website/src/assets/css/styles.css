@@ -1,4 +1,2 @@
-body {
-    background: #0147A7;
-    color: #fff;
-}
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
