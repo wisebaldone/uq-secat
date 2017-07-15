@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MdSidenavModule, MdButtonModule } from '@angular/material';
 
 import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course.component';
 
 import { AppComponent } from './app.component';
+import 'hammerjs';
+
 
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MdButtonModule,
-    MdCheckboxModule
+    FormsModule,
+    FlexLayoutModule,
+    MdSidenavModule,
+    MdButtonModule
   ],
   declarations: [
     AppComponent,
