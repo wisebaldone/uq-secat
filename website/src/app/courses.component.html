@@ -1,1 +1,11 @@
-<h1>Courses</h1>
+<form action="">
+    <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+        </md-option>
+    </md-autocomplete>
+    <md-input-container>
+        <input type="text" mdInput [formControl]="courseSelector" [mdAutocomplete]="auto">
+    </md-input-container>
+
+</form>

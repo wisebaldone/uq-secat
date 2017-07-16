@@ -1,22 +1,10 @@
-html, body, material-app, md-sidenav-container, .my-content {
-  margin: 0;
+md-sidenav-container {
   width: 100%;
   height: 100%;
 }
 
-.example-container {
-  width: 500px;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  padding: 20px;
+.page-header {
+  display: inline;
+  vertical-align: middle;
+  font-size: 1.3em;
 }

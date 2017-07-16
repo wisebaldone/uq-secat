@@ -1,12 +1,17 @@
-<md-sidenav-container class="example-container">
-  <md-sidenav #sidenav class="example-sidenav">
-    Jolly good!
+<md-toolbar color="primary">
+  <button type="button" md-button (click)="sidenav.toggle()">
+    <md-icon>menu</md-icon>
+  </button>
+  <span class="page-header">UQ Secat's</span>
+  <div fxFlex="grow"></div>
+  <span class="mat-button"><button type="button" md-button><img src="../assets/images/github-circle-white-transparent.svg" alt=""> GITHUB</button></span>
+</md-toolbar>
+<md-sidenav-container class="example-container" >
+  <md-sidenav mode="side" opened="true" #sidenav class="example-sidenav">
+    <courses></courses>
   </md-sidenav>
-
   <div class="example-sidenav-content">
-    <button type="button" md-button (click)="sidenav.open()">
-      Open sidenav
-    </button>
+    <course></course>
   </div>
-
+  <footer>Im the footer</footer>
 </md-sidenav-container>

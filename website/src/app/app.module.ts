@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MdSidenavModule, MdButtonModule } from '@angular/material';
+import {
+  MdSidenavModule,
+  MdButtonModule,
+  MdToolbarModule,
+  MdIconModule,
+  MdInputModule,
+  MdAutocompleteModule
+} from '@angular/material';
 
 import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course.component';
@@ -14,10 +22,16 @@ import 'hammerjs';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MdSidenavModule,
-    MdButtonModule
+    MdButtonModule,
+    MdToolbarModule,
+    MdIconModule,
+    MdInputModule,
+    MdAutocompleteModule
   ],
   declarations: [
     AppComponent,
