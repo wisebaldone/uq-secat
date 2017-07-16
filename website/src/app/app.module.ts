@@ -9,13 +9,16 @@ import {
   MdToolbarModule,
   MdIconModule,
   MdInputModule,
-  MdAutocompleteModule
+  MdAutocompleteModule,
+  MdTabsModule
 } from '@angular/material';
+import { HttpModule }    from '@angular/http';
 
 import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course.component';
 
 import { AppComponent } from './app.component';
+import {CoursesService} from "./courses.service";
 import 'hammerjs';
 
 
@@ -24,6 +27,7 @@ import 'hammerjs';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MdSidenavModule,
@@ -31,8 +35,10 @@ import 'hammerjs';
     MdToolbarModule,
     MdIconModule,
     MdInputModule,
-    MdAutocompleteModule
+    MdAutocompleteModule,
+    MdTabsModule
   ],
+  providers: [ CoursesService ],
   declarations: [
     AppComponent,
     CoursesComponent,

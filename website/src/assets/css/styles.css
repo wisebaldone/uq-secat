@@ -1,4 +1,4 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 
 html, body, my-app {
@@ -6,4 +6,5 @@ html, body, my-app {
     width: 100%;
     min-height: 100%;
     height: 100%;
+    font-family: "Roboto";
 }

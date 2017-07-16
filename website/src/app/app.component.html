@@ -1,17 +1,19 @@
-<md-toolbar color="primary">
-  <button type="button" md-button (click)="sidenav.toggle()">
-    <md-icon>menu</md-icon>
-  </button>
-  <span class="page-header">UQ Secat's</span>
-  <div fxFlex="grow"></div>
-  <span class="mat-button"><button type="button" md-button><img src="../assets/images/github-circle-white-transparent.svg" alt=""> GITHUB</button></span>
-</md-toolbar>
 <md-sidenav-container class="example-container" >
-  <md-sidenav mode="side" opened="true" #sidenav class="example-sidenav">
-    <courses></courses>
+  <md-sidenav #sidenav class="sidenav">
   </md-sidenav>
-  <div class="example-sidenav-content">
-    <course></course>
+  <div class="page" fxLayout="column">
+    <md-toolbar color="primary">
+      <button type="button" md-button (click)="sidenav.toggle()">
+        <md-icon>menu</md-icon>
+      </button>
+      <span class="page-header">UQ Secat's</span>
+      <div fxFlex="grow"></div>
+      <span class="mat-button"><button type="button" md-button><img src="../assets/images/github-circle-white-transparent.svg" alt=""> GITHUB</button></span>
+    </md-toolbar>
+    <div class="content" fxFlex="grow">
+      <courses></courses>
+      <course></course>
+    </div>
+    <footer>UQ Secat</footer>
   </div>
-  <footer>Im the footer</footer>
 </md-sidenav-container>
