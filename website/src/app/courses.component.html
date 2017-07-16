@@ -5,6 +5,7 @@
     </md-option>
   </md-autocomplete>
   <md-input-container style="color: white;">
-    <input type="text" mdInput placeholder="Course Code" [formControl]="courseSelector" [mdAutocomplete]="auto">
+    <input type="text" mdInput [(ngModel)]="courseInput" placeholder="Course Code" [formControl]="courseSelector" [mdAutocomplete]="auto">
   </md-input-container>
 </div>
+<course [courseName]="courseInput" fxFlex="grow" fxFlexAlign="center"></course>

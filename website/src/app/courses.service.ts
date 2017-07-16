@@ -24,8 +24,19 @@ export class CoursesService {
             .catch(this.handleError);
     }
 
-    getCourse(code: string): Course {
-        return;
+    getCourse(code: string): any {
+        if (this.courses.hasOwnProperty(code)) {
+            return this.courses[code];
+        } else {
+            return null;
+        }
+    }
+
+    getSecat(code: string, year: string, sem: number): Promise<Course> {
+        return this.http.get("api/" + code + "/" + year + "/" + sem + ".json")
+            .toPromise()
+            .then(response => response.json() as Course)
+            .catch(this.handleError);
     }
 
     handleError(error: any): Promise<any> {

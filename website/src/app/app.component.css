@@ -24,3 +24,12 @@ footer {
 
 .content {
 }
+
+courses {
+  max-width: 960px;
+  padding-top: 50px;
+}
+
+course {
+  max-width: 960px;
+}
