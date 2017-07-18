@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Course } from './courses';
 
@@ -6,9 +6,13 @@ import { Course } from './courses';
 export class CoursesService {
     courses: any = {};
     courseList: string[] = [];
+    api:string = "api/";
 
     constructor(private http: Http) {
-        this.http.get("api/courses.json")
+        if (!isDevMode()) {
+            this.api = "uq-secat/api/";
+        }
+        this.http.get(this.api + "courses.json")
             .toPromise()
             .then(response => {
                 this.courses = response.json();
@@ -18,7 +22,7 @@ export class CoursesService {
     }
 
     getCourses(): Promise<string[]> {
-        return this.http.get("api/courses.json")
+        return this.http.get(this.api + "courses.json")
             .toPromise()
             .then(response => Object.keys(response.json()))
             .catch(this.handleError);
@@ -33,7 +37,7 @@ export class CoursesService {
     }
 
     getSecat(code: string, year: string, sem: number): Promise<Course> {
-        return this.http.get("api/" + code + "/" + year + "/" + sem + ".json")
+        return this.http.get(this.api + code + "/" + year + "/" + sem + ".json")
             .toPromise()
             .then(response => response.json() as Course)
             .catch(this.handleError);

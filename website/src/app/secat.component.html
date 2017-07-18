@@ -1,4 +1,5 @@
-<table>
+<div class="secat-spacer"></div>
+<table class="secat-enrolled">
     <tr>
         <th>Enrolled</th>
         <th>Responses</th>
@@ -7,10 +8,11 @@
     <tr>
         <td>{{ secat.enrolled }}</td>
         <td>{{ secat.responses }}</td>
-        <td>{{ secat.rate }}</td>
+        <td [class.good]="ratingGood(secat.rate)" [class.bad]="ratingBad(secat.rate)" [class.neutral]="ratingNeutral(secat.rate)">{{ secat.rate }}</td>
     </tr>
 </table>
-<table>
+<div class="secat-spacer"></div>
+<table class="secat-questions">
     <tr>
         <th>Question</th>
         <th>Strong Disagree</th>
@@ -20,12 +22,13 @@
         <th>Strong Agree</th>
     </tr>
     <tr *ngFor="let question of questions">
-        <td>{{ question.description }}</td>
-        <td>{{ question.strong_disagree.percent }}</td>
-        <td>{{ question.disagree.percent }}</td>
-        <td>{{ question.neutral.percent }}</td>
-        <td>{{ question.agree.percent }}</td>
-        <td>{{ question.strong_agree.percent }}</td>
+        <td class="secat-question">{{ question.description }}</td>
+        <td [class.highest]="highestItem(question, question.strong_disagree.percent)">{{ question.strong_disagree.percent }}</td>
+        <td [class.highest]="highestItem(question, question.disagree.percent)">{{ question.disagree.percent }}</td>
+        <td [class.highest]="highestItem(question, question.neutral.percent)">{{ question.neutral.percent }}</td>
+        <td [class.highest]="highestItem(question, question.agree.percent)">{{ question.agree.percent }}</td>
+        <td [class.highest]="highestItem(question, question.strong_agree.percent)">{{ question.strong_agree.percent }}</td>
     </tr>
 </table>
+<div class="secat-spacer"></div>
 <div #graph id="graph"></div>

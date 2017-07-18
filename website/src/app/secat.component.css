@@ -1,0 +1,51 @@
+.secat-spacer {
+  padding: 20px 0;
+  width: 100%;
+}
+
+.secat-enrolled {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.secat-enrolled th, .secat-enrolled td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.secat-questions {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.secat-questions th, .secat-questions td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.secat-questions tr:hover {
+  background-color: #494949;
+}
+
+.secat-question {
+  text-align: left !important;
+}
+
+.highest {
+  color: #4bca52;
+}
+
+.good {
+  color: #4bca52;
+}
+
+.neutral {
+  color: #e6de20;
+}
+
+.bad {
+  color: #f96050;
+}
+
