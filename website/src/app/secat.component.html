@@ -1,0 +1,31 @@
+<table>
+    <tr>
+        <th>Enrolled</th>
+        <th>Responses</th>
+        <th>Response Rate</th>
+    </tr>
+    <tr>
+        <td>{{ secat.enrolled }}</td>
+        <td>{{ secat.responses }}</td>
+        <td>{{ secat.rate }}</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>Question</th>
+        <th>Strong Disagree</th>
+        <th>Disagree</th>
+        <th>Neutral</th>
+        <th>Agree</th>
+        <th>Strong Agree</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+        <td>{{ question.description }}</td>
+        <td>{{ question.strong_disagree.percent }}</td>
+        <td>{{ question.disagree.percent }}</td>
+        <td>{{ question.neutral.percent }}</td>
+        <td>{{ question.agree.percent }}</td>
+        <td>{{ question.strong_agree.percent }}</td>
+    </tr>
+</table>
+<div #graph id="graph"></div>

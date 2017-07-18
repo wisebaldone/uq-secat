@@ -20,6 +20,7 @@ import { CourseComponent } from './course.component';
 import { AppComponent } from './app.component';
 import {CoursesService} from "./courses.service";
 import 'hammerjs';
+import {SecatComponent} from "./secat.component";
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import 'hammerjs';
     AppComponent,
     CoursesComponent,
     CourseComponent,
+    SecatComponent
   ],
   bootstrap: [ AppComponent ]
 })
