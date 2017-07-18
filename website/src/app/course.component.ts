@@ -18,17 +18,27 @@ export class CourseComponent {
     constructor(private coursesService: CoursesService) {
     }
 
+    ngOnInit() {
+        this.loadSecats();
+    }
+
     ngOnChanges() {
-        this.course = this.coursesService.getCourse(this.courseName);
+        this.loadSecats();
+    }
+
+    loadSecats() {
+        var courseCode = (' ' + this.courseName).toUpperCase().slice(1);
+        this.course = this.coursesService.getCourse(courseCode);
         if (this.course != null) {
             this.secats = [];
             for (let year in this.course) {
-                console.log(this.course[year]);
                 for (var i = 0; i < this.course[year].length; i++)
                     this.coursesService
-                        .getSecat(this.courseName, year, parseInt(this.course[year][i]))
+                        .getSecat(courseCode, year, parseInt(this.course[year][i]))
                         .then(secat => {this.secats.push(secat); console.log(this.secats);});
             }
+        } else {
+            this.secats = [];
         }
     }
 }

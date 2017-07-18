@@ -1,8 +1,3 @@
-md-sidenav-container, .page {
-  width: 100%;
-  height: 100%;
-}
-
 .sidenav {
   padding: 20px 20px 20px 20px;
 }
@@ -23,6 +18,8 @@ footer {
 }
 
 .content {
+  padding-bottom: 200px;
+  overflow-x: auto;
 }
 
 courses {

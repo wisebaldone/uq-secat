@@ -1,4 +1,3 @@
-<h1>{{ courseName }}</h1>
 <h4 *ngIf="courseDescription != ''"> {{ courseDescription }}</h4>
 <md-tab-group *ngIf="secats.length != 0">
     <md-tab *ngFor="let secat of secats" label="{{ secat.year }} : {{ secat.semester }}">
