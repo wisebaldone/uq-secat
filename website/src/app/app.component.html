@@ -1,18 +1,19 @@
-<md-sidenav-container fxFlex="grow" class="example-container" >
-  <md-sidenav #sidenav class="sidenav">
-  </md-sidenav>
-  <div class="page" fxFlex="grow" fxLayout="column">
-    <md-toolbar color="primary">
-      <button type="button" md-button (click)="sidenav.toggle()">
-        <md-icon>menu</md-icon>
-      </button>
-      <span class="page-header">UQ Secat's</span>
-      <div fxFlex="grow"></div>
-      <span class="mat-button"><button type="button" md-button><img src="../assets/images/github-circle-white-transparent.svg" alt=""> GITHUB</button></span>
-    </md-toolbar>
-    <div class="content" fxFlex="grow" fxLayout="column">
-      <courses fxFlexAlign="center" fxLayout="column"></courses>
+<md-sidenav-container fxFlex="grow" class="example-container">
+    <md-sidenav #sidenav class="sidenav">
+    </md-sidenav>
+    <div class="page" fxFlex="grow" fxLayout="column">
+        <md-toolbar color="primary">
+            <button type="button" md-button (click)="sidenav.toggle()">
+                <md-icon>menu</md-icon>
+            </button>
+            <span class="page-header">UQ Secat's</span>
+            <div fxFlex="grow"></div>
+            <span><button type="button" md-button><img
+                    src="../assets/images/github-circle-white-transparent.svg" alt=""> GITHUB</button></span>
+        </md-toolbar>
+        <div class="content" fxFlex="grow" fxLayout="column">
+            <courses fxFlexAlign="center" fxLayout="column"></courses>
+        </div>
+        <footer>UQ Secat</footer>
     </div>
-    <footer>UQ Secat</footer>
-  </div>
 </md-sidenav-container>
