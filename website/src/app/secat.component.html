@@ -21,7 +21,7 @@
         <th>Agree</th>
         <th>Strong Agree</th>
     </tr>
-    <tr *ngFor="let question of questions">
+    <tr *ngFor="let question of questions" [class.overall] ="lastQuestion(question)">
         <td class="secat-question">{{ question.description }}</td>
         <td [class.highest]="highestItem(question, question.strong_disagree.percent)">{{ question.strong_disagree.percent }}</td>
         <td [class.highest]="highestItem(question, question.disagree.percent)">{{ question.disagree.percent }}</td>

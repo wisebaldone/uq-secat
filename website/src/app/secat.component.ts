@@ -13,17 +13,28 @@ export class SecatComponent {
     @Input() secat: Course;
     @ViewChild('graph') plotlyDiv: ElementRef;
 
-    questions: any[];
+    questions: Secat[] = [];
 
-    data = [
-        {
-            x: ['giraffes', 'orangutans', 'monkeys'],
-            y: [20, 14, 23],
-            type: 'bar'
+    data:any = [];
+
+    layout = {
+        title: '',
+        barmode: 'group',
+        margin: {
+            l: 30,
+            r: 10,
+            t: 40,
+            b: 30
+        },
+        yaxis: {
+            rangemode: "nonnegative",
+            range: [0, 100],
+            autorange: false
         }
-    ];
+    };
 
     ngOnInit() {
+        this.layout.title = this.secat.course + " : " + this.secat.year + " semester " + this.secat.semester.toString();
         this.questions = [
             this.secat.q1,
             this.secat.q2,
@@ -34,7 +45,75 @@ export class SecatComponent {
             this.secat.q7,
             this.secat.q8,
         ];
-        Plotly.newPlot(this.plotlyDiv.nativeElement, this.data);
+
+
+        this.data = [];
+
+
+        let x = [];
+        let yStrongAgree = [];
+        let yAgree = [];
+        let yNeutral = [];
+        let yDisagree = [];
+        let yStrongDisagree = [];
+        let counter = 1;
+        for (let question of this.questions) {
+            x.push("Q" + counter.toString());
+            yStrongAgree.push(question.strong_agree.percent);
+            yAgree.push(question.agree.percent);
+            yNeutral.push(question.neutral.percent);
+            yDisagree.push(question.disagree.percent);
+            yStrongDisagree.push(question.strong_disagree.percent);
+            counter++;
+        }
+
+        this.data.push({
+            y: yStrongDisagree,
+            x: x,
+            name: 'Strong Disagree',
+            type: 'bar',
+            marker: {
+                color: 'rgb(224,53,62)'
+            }
+        });
+        this.data.push({
+            y: yDisagree,
+            x: x,
+            name: 'Disagree',
+            type: 'bar',
+            marker: {
+                color: 'rgb(224,70,53)'
+            }
+        });
+        this.data.push({
+            y: yNeutral,
+            x: x,
+            name: 'Neutral',
+            type: 'bar',
+            marker: {
+                color: 'rgb(239,120,40)'
+            }
+        });
+        this.data.push({
+            y: yAgree,
+            x: x,
+            name: 'Agree',
+            type: 'bar',
+            marker: {
+                color: 'rgb(116,196,62)'
+            }
+        });
+        this.data.push({
+            y: yStrongAgree,
+            x: x,
+            name: 'Strong Agree',
+            type: 'bar',
+            marker: {
+                color: 'rgb(72,163,39)'
+            }
+        });
+        console.log(this.data);
+        Plotly.newPlot(this.plotlyDiv.nativeElement, this.data, this.layout, {displayModeBar: false});
     }
 
     highestItem(question: any, current: number): boolean {
@@ -66,5 +145,9 @@ export class SecatComponent {
     ratingBad(rate:string): boolean {
         let percent = parseInt(rate.split("%")[0]);
         return percent <= 30;
+    }
+
+    lastQuestion(question:any): boolean {
+        return question.description.indexOf("Overall") !== -1;
     }
 }
