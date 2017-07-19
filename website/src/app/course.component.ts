@@ -36,10 +36,18 @@ export class CourseComponent {
                 for (var i = 0; i < this.course[year].length; i++)
                     this.coursesService
                         .getSecat(courseCode, year, parseInt(this.course[year][i]))
-                        .then(secat => {this.secats.push(secat); console.log(this.secats);});
+                        .then(secat => {
+                            this.secats.push(secat);
+                            console.log(this.secats);
+                            this.secats.sort(this.secatSort);
+                        });
             }
         } else {
             this.secats = [];
         }
+    }
+
+    secatSort(a:Course, b:Course) {
+        return (b.year + ":" + b.semester).localeCompare(a.year + ":" + a.semester);
     }
 }
