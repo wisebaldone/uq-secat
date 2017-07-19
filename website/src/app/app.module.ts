@@ -3,6 +3,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { RouterModule, Routes } from '@angular/router';
 import {
   MdSidenavModule,
   MdButtonModule,
@@ -23,12 +24,18 @@ import 'hammerjs';
 import {SecatComponent} from "./secat.component";
 
 
+const appRoutes: Routes = [
+  { path: 'course/:code', component: CoursesComponent },
+  { path: '', component: CoursesComponent }
+];
+
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true, useHash: true}),
     ReactiveFormsModule,
     FlexLayoutModule,
     MdSidenavModule,

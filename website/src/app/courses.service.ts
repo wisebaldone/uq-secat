@@ -1,12 +1,19 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Course } from './courses';
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class CoursesService {
     courses: any = {};
     courseList: string[] = [];
     api:string = "api/";
+
+    private readySource = new Subject<boolean>();
+    ready = this.readySource.asObservable();
+
+    private activeCourseSource = new Subject<string>();
+    activeCourse = this.activeCourseSource.asObservable();
 
     constructor(private http: Http) {
         if (!isDevMode()) {
@@ -17,6 +24,7 @@ export class CoursesService {
             .then(response => {
                 this.courses = response.json();
                 this.courseList = Object.keys(this.courses);
+                this.readySource.next(true);
             })
             .catch(this.handleError);
     }
@@ -46,5 +54,9 @@ export class CoursesService {
     handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
+    }
+
+    announceNewCourse(course: string) {
+        this.activeCourseSource.next(course);
     }
 }

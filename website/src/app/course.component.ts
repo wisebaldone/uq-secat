@@ -2,6 +2,7 @@ import { Component, Input } from  '@angular/core';
 
 import { CoursesService } from './courses.service';
 import { Course } from './courses';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,18 +13,23 @@ import { Course } from './courses';
 
 export class CourseComponent {
     course: any;
+    courseCode: string = "";
     courseDescription: string = "";
     secats: Course[] = [];
-    @Input() courseName: string = "LAWS1700";
+    @Input() courseName: string = "";
 
-    constructor(private coursesService: CoursesService) {
+    constructor(private coursesService: CoursesService, private router: Router) {
+        coursesService.activeCourse.subscribe(courseCode => {
+           console.log(courseCode);
+           this.courseName = courseCode;
+           this.loadSecats();
+        });
+        coursesService.ready.subscribe(ready => {
+            this.loadSecats();
+        })
     }
 
     ngOnInit() {
-        this.loadSecats();
-    }
-
-    ngOnChanges() {
         this.loadSecats();
     }
 
@@ -31,6 +37,7 @@ export class CourseComponent {
         var courseCode = (' ' + this.courseName).toUpperCase().slice(1);
         this.course = this.coursesService.getCourse(courseCode);
         if (this.course != null) {
+            this.router.navigate(["course/", courseCode]);
             this.secats = [];
             for (let year in this.course) {
                 for (var i = 0; i < this.course[year].length; i++)
@@ -38,12 +45,18 @@ export class CourseComponent {
                         .getSecat(courseCode, year, parseInt(this.course[year][i]))
                         .then(secat => {
                             this.secats.push(secat);
-                            console.log(this.secats);
                             this.secats.sort(this.secatSort);
+
+                            if (this.courseCode != secat.course) {
+                                this.courseCode = secat.course;
+                                this.courseDescription = secat.description;
+                            }
                         });
             }
         } else {
             this.secats = [];
+            this.courseCode = "";
+            this.courseDescription = "";
         }
     }
 

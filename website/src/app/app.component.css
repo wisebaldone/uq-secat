@@ -21,12 +21,3 @@ footer {
   padding-bottom: 200px;
   overflow-x: auto;
 }
-
-courses {
-  max-width: 960px;
-  padding-top: 50px;
-}
-
-course {
-  max-width: 960px;
-}

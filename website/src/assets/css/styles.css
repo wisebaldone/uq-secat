@@ -7,3 +7,8 @@ html, body, my-app {
     height: 100%;
     font-family: "Roboto", sans-serif;
 }
+
+courses {
+    padding-top: 40px;
+    flex-direction: column !important;
+}
