@@ -16,9 +16,6 @@ export class CoursesService {
     activeCourse = this.activeCourseSource.asObservable();
 
     constructor(private http: Http) {
-        if (!isDevMode()) {
-            this.api = "uq-secat/api/";
-        }
         this.http.get(this.api + "courses.json")
             .toPromise()
             .then(response => {
