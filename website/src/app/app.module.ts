@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ import {SecatComponent} from "./secat.component";
 
 const appRoutes: Routes = [
   { path: 'course/:code', component: CoursesComponent },
-  { path: '', component: CoursesComponent }
+  { path: '**', component: CoursesComponent }
 ];
 
 @NgModule({

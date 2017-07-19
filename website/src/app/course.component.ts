@@ -1,4 +1,4 @@
-import { Component, Input } from  '@angular/core';
+import { Component, Input, isDevMode } from  '@angular/core';
 
 import { CoursesService } from './courses.service';
 import { Course } from './courses';
@@ -37,7 +37,7 @@ export class CourseComponent {
         var courseCode = (' ' + this.courseName).toUpperCase().slice(1);
         this.course = this.coursesService.getCourse(courseCode);
         if (this.course != null) {
-            this.router.navigate(["course/", courseCode]);
+            this.router.navigate(["./course/", courseCode]);
             this.secats = [];
             for (let year in this.course) {
                 for (var i = 0; i < this.course[year].length; i++)
