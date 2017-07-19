@@ -2,6 +2,7 @@ var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
   devtool: 'cheap-module-eval-source-map',
@@ -14,6 +15,7 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
+    new BaseHrefWebpackPlugin({ baseHref: '/' }),
     new ExtractTextPlugin('[name].css')
   ],
 
