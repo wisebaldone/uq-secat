@@ -25,6 +25,8 @@ import {SecatComponent} from "./secat.component";
 
 
 const appRoutes: Routes = [
+  { path: 'uq-secat/course/:code', component: CoursesComponent },
+  { path: 'uq-secat/', component: CoursesComponent },
   { path: 'course/:code', component: CoursesComponent },
   { path: '**', component: CoursesComponent }
 ];
