@@ -1,10 +1,11 @@
-import { Component, Input } from  '@angular/core';
+import { Component } from  '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { CoursesService } from './courses.service';
 
 import {Observable} from "rxjs/Observable";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {isNullOrUndefined} from "util";
 
 @Component({
     selector: 'courses',
@@ -18,7 +19,7 @@ export class CoursesComponent {
     courseList: string[] = [];
     initialCourse: string = "";
 
-    constructor(private coursesService: CoursesService, route: ActivatedRoute) {
+    constructor(private coursesService: CoursesService, private route: ActivatedRoute, private router: Router) {
         this.initialCourse = route.snapshot.params['code'];
         this.coursesService.getCourses().then(courses => {
             this.courseList = courses;
@@ -29,8 +30,7 @@ export class CoursesComponent {
         this.filteredOptions = this.courseSelector.valueChanges
             .startWith(null)
             .map(val => val ? this.filter(val) : []);
-        if (this.initialCourse !== '') {
-            console.log("HELLO");
+        if (!isNullOrUndefined(this.initialCourse)) {
             this.coursesService.announceNewCourse(this.initialCourse);
         }
     }
@@ -40,7 +40,10 @@ export class CoursesComponent {
     }
 
     updateChild() {
-        console.log(this.courseSelector.value);
-        this.coursesService.announceNewCourse(this.courseSelector.value.toUpperCase());
+        var course = (' ' + this.courseSelector.value).toUpperCase().slice(1);
+        if (course.length == 8 && this.coursesService.getCourse(course) != null) {
+            this.router.navigate(["./course/", course]);
+            this.coursesService.announceNewCourse(course);
+        }
     }
 }

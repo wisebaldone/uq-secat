@@ -23,11 +23,31 @@
     </tr>
     <tr *ngFor="let question of questions" [class.overall] ="lastQuestion(question)">
         <td class="secat-question">{{ question.description }}</td>
-        <td [class.highest]="highestItem(question, question.strong_disagree.percent)">{{ question.strong_disagree.percent }}%</td>
-        <td [class.highest]="highestItem(question, question.disagree.percent)">{{ question.disagree.percent }}%</td>
-        <td [class.highest]="highestItem(question, question.neutral.percent)">{{ question.neutral.percent }}%</td>
-        <td [class.highest]="highestItem(question, question.agree.percent)">{{ question.agree.percent }}%</td>
-        <td [class.highest]="highestItem(question, question.strong_agree.percent)">{{ question.strong_agree.percent }}%</td>
+        <td [class.highest]="highestItem(question, question.strong_disagree.percent)">
+            <span mdTooltip="{{ question.strong_disagree.value }} / {{ question.strong_disagree.total }}" mdTooltipPosition="after">
+                {{ question.strong_disagree.percent }}%
+            </span>
+        </td>
+        <td [class.highest]="highestItem(question, question.disagree.percent)">
+            <span mdTooltip="{{ question.disagree.value }} / {{ question.disagree.total }}" mdTooltipPosition="after">
+                {{ question.disagree.percent }}%
+            </span>
+        </td>
+        <td [class.highest]="highestItem(question, question.neutral.percent)">
+            <span mdTooltip="{{ question.neutral.value }} / {{ question.neutral.total }}" mdTooltipPosition="after">
+                {{ question.neutral.percent }}%
+            </span>
+        </td>
+        <td [class.highest]="highestItem(question, question.agree.percent)">
+            <span mdTooltip="{{ question.agree.value }} / {{ question.agree.total }}" mdTooltipPosition="after">
+                {{ question.agree.percent }}%
+            </span>
+        </td>
+        <td [class.highest]="highestItem(question, question.strong_agree.percent)">
+            <span mdTooltip="{{ question.strong_agree.value }} / {{ question.strong_agree.total }}" mdTooltipPosition="after">
+                {{ question.strong_agree.percent }}%
+            </span>
+        </td>
     </tr>
 </table>
 <div class="secat-spacer"></div>

@@ -25,7 +25,7 @@
     "e2e": "ng e2e"
   },
   "keywords": [],
-  "author": "",
+  "author": "wisebaldone ( Evan Hughes )",
   "license": "MIT",
   "dependencies": {
     "@angular/animations": "~4.3.0",

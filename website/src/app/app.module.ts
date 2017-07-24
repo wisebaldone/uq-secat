@@ -11,7 +11,7 @@ import {
   MdIconModule,
   MdInputModule,
   MdAutocompleteModule,
-  MdTabsModule
+  MdTabsModule, MdTooltipModule
 } from '@angular/material';
 import { HttpModule }    from '@angular/http';
 
@@ -25,8 +25,6 @@ import {SecatComponent} from "./secat.component";
 
 
 const appRoutes: Routes = [
-  { path: 'uq-secat/course/:code', component: CoursesComponent },
-  { path: 'uq-secat/', component: CoursesComponent },
   { path: 'course/:code', component: CoursesComponent },
   { path: '**', component: CoursesComponent }
 ];
@@ -46,7 +44,8 @@ const appRoutes: Routes = [
     MdIconModule,
     MdInputModule,
     MdAutocompleteModule,
-    MdTabsModule
+    MdTabsModule,
+    MdTooltipModule
   ],
   providers: [ CoursesService ],
   declarations: [

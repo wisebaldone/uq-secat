@@ -1,8 +1,9 @@
-import { Component, Input, isDevMode } from  '@angular/core';
+import { Component, Input } from  '@angular/core';
 
 import { CoursesService } from './courses.service';
 import { Course } from './courses';
 import {Router} from "@angular/router";
+import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -16,11 +17,10 @@ export class CourseComponent {
     courseCode: string = "";
     courseDescription: string = "";
     secats: Course[] = [];
-    @Input() courseName: string = "";
+    courseName: string = "HELLO";
 
-    constructor(private coursesService: CoursesService, private router: Router) {
+    constructor(private coursesService: CoursesService) {
         coursesService.activeCourse.subscribe(courseCode => {
-           console.log(courseCode);
            this.courseName = courseCode;
            this.loadSecats();
         });
@@ -34,15 +34,13 @@ export class CourseComponent {
     }
 
     loadSecats() {
-        var courseCode = (' ' + this.courseName).toUpperCase().slice(1);
-        this.course = this.coursesService.getCourse(courseCode);
+        this.course = this.coursesService.getCourse(this.courseName);
         if (this.course != null) {
-            this.router.navigate(["./course/", courseCode]);
             this.secats = [];
             for (let year in this.course) {
                 for (var i = 0; i < this.course[year].length; i++)
                     this.coursesService
-                        .getSecat(courseCode, year, parseInt(this.course[year][i]))
+                        .getSecat(this.courseName, year, parseInt(this.course[year][i]))
                         .then(secat => {
                             this.secats.push(secat);
                             this.secats.sort(this.secatSort);
