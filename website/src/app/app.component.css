@@ -1,22 +1,39 @@
 .sidenav {
-  padding: 20px 20px 20px 20px;
 }
-
 .sidenav-content {
   padding: 20px;
 }
-
+.nav-item {
+  width: 100px;
+  display: block;
+  text-align: center;
+  padding: 0;
+}
+.nav-item > a {
+  width:80px;
+  height:100%;
+  display: block;
+  padding: 20px 10px;
+  color: white;
+  text-decoration: none;
+}
+.active {
+  background-color: #cfcfcf;
+  color: #C2185B !important;
+}
+.nav-item > a:hover {
+  background-color: #C2185B;
+  color: white !important;
+}
 .page-header {
   display: inline;
   vertical-align: middle;
   font-size: 1.3em;
 }
-
 footer {
   background-color: #c2185b;
   padding: 20px;
 }
-
 .content {
   padding-bottom: 200px;
   overflow-x: auto;

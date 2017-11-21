@@ -22,10 +22,12 @@ import { AppComponent } from './app.component';
 import {CoursesService} from "./courses.service";
 import 'hammerjs';
 import {SecatComponent} from "./secat.component";
+import {ApiComponent} from "./api.component";
 
 
 const appRoutes: Routes = [
   { path: 'course/:code', component: CoursesComponent },
+  { path: 'api', component: ApiComponent },
   { path: '**', component: CoursesComponent }
 ];
 
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     AppComponent,
     CoursesComponent,
     CourseComponent,
-    SecatComponent
+    SecatComponent,
+    ApiComponent
   ],
   bootstrap: [ AppComponent ]
 })

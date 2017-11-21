@@ -1,5 +1,10 @@
 <md-sidenav-container fxFlex="grow" class="example-container">
     <md-sidenav #sidenav class="sidenav">
+        <ul class="nav-list">
+            <li class="nav-item"><a routerLink="/course" routerLinkActive="active">Home</a></li>
+            <li class="nav-item"><a routerLink="/api" routerLinkActive="active">Api</a></li>
+            <li class="nav-item"><a routerLink="/about" routerLinkActive="active">About</a></li>
+        </ul>
     </md-sidenav>
     <div class="page" fxFlex="grow" fxLayout="column">
         <md-toolbar color="primary">
