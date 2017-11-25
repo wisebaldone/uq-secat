@@ -1,0 +1,14 @@
+#content {
+    max-width: 600px;
+    margin: 80px auto auto;
+    background-color: #4f4f4f;
+}
+
+#title {
+    background-color: #c2185b;
+    padding: 10px 20px 10px 20px;
+}
+
+#text {
+    padding: 20px;
+}
