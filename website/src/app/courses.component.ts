@@ -30,9 +30,11 @@ export class CoursesComponent {
         this.filteredOptions = this.courseSelector.valueChanges
             .startWith(null)
             .map(val => val ? this.filter(val) : []);
-        if (!isNullOrUndefined(this.initialCourse)) {
-            this.coursesService.announceNewCourse(this.initialCourse);
-        }
+        this.coursesService.ready.subscribe(ready => {
+            if (!isNullOrUndefined(this.initialCourse)) {
+                this.coursesService.announceNewCourse(this.initialCourse);
+            }
+        });
     }
 
     filter(val: string): string[] {
@@ -42,8 +44,10 @@ export class CoursesComponent {
     updateChild() {
         var course = (' ' + this.courseSelector.value).toUpperCase().slice(1);
         if (course.length == 8 && this.coursesService.getCourse(course) != null) {
-            this.router.navigate(["./course/", course]);
-            this.coursesService.announceNewCourse(course);
+            var change:Promise<boolean> = this.router.navigate(["./course/", course]);
+            change.then(value => {
+                this.coursesService.announceNewCourse(course);
+            });
         }
     }
 }

@@ -1,9 +1,7 @@
-import { Component, Input } from  '@angular/core';
+import { Component } from  '@angular/core';
 
 import { CoursesService } from './courses.service';
 import { Course } from './courses';
-import {Router} from "@angular/router";
-import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -20,17 +18,14 @@ export class CourseComponent {
     courseName: string = "Type a course code above.";
 
     constructor(private coursesService: CoursesService) {
-        coursesService.activeCourse.subscribe(courseCode => {
-           this.courseName = courseCode;
-           this.loadSecats();
-        });
-        coursesService.ready.subscribe(ready => {
+        this.coursesService.activeCourse.subscribe(courseCode => {
+            this.courseName = courseCode;
+            console.log("New course: " + courseCode);
             this.loadSecats();
-        })
+        });
     }
 
     ngOnInit() {
-        this.loadSecats();
     }
 
     loadSecats() {
@@ -44,7 +39,6 @@ export class CourseComponent {
                         .then(secat => {
                             this.secats.push(secat);
                             this.secats.sort(this.secatSort);
-
                             if (this.courseCode != secat.course) {
                                 this.courseCode = secat.course;
                                 this.courseDescription = secat.description;
@@ -52,6 +46,7 @@ export class CourseComponent {
                         });
             }
         } else {
+            console.error("Invalid Course: {" + this.courseName + "}");
             this.secats = [];
             this.courseCode = "";
             this.courseDescription = "";
