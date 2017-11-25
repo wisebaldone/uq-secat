@@ -20,7 +20,6 @@ export class CourseComponent {
     constructor(private coursesService: CoursesService) {
         this.coursesService.activeCourse.subscribe(courseCode => {
             this.courseName = courseCode;
-            console.log("New course: " + courseCode);
             this.loadSecats();
         });
     }

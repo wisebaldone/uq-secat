@@ -1,11 +1,13 @@
 <div class="courses-container" fxFlexAlign="center">
-  <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let option of filteredOptions | async" [value]="option">
-      {{ option }}
-    </md-option>
-  </md-autocomplete>
-  <md-input-container style="color: white;">
-    <input type="text" style="text-transform: uppercase;" mdInput [(ngModel)]="courseInput" (keyup)="updateChild()" placeholder="Course Code" [formControl]="courseSelector" [mdAutocomplete]="auto">
-  </md-input-container>
+    <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+        </md-option>
+    </md-autocomplete>
+    <md-input-container style="color: white;">
+        <input type="text" style="text-transform: uppercase;" mdInput [(ngModel)]="courseInput"
+               (ngModelChange)="updateChild()" placeholder="Course Code" [formControl]="courseSelector"
+               [mdAutocomplete]="auto">
+    </md-input-container>
 </div>
 <course fxFlex="grow" fxFlexAlign="center"></course>

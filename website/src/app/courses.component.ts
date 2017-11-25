@@ -1,4 +1,4 @@
-import { Component } from  '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { CoursesService } from './courses.service';
@@ -18,6 +18,8 @@ export class CoursesComponent {
     filteredOptions: Observable<string[]>;
     courseList: string[] = [];
     initialCourse: string = "";
+
+    courseInput: string;
 
     constructor(private coursesService: CoursesService, private route: ActivatedRoute, private router: Router) {
         this.initialCourse = route.snapshot.params['code'];
@@ -42,9 +44,9 @@ export class CoursesComponent {
     }
 
     updateChild() {
-        var course = (' ' + this.courseSelector.value).toUpperCase().slice(1);
+        let course: string = this.courseInput.slice().toUpperCase();
         if (course.length == 8 && this.coursesService.getCourse(course) != null) {
-            var change:Promise<boolean> = this.router.navigate(["./course/", course]);
+            let change: Promise<boolean> = this.router.navigate(["./course/", course]);
             change.then(value => {
                 this.coursesService.announceNewCourse(course);
             });

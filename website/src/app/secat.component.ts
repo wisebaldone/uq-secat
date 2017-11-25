@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, ViewChild} from  '@angular/core';
 import {Course, Secat} from './courses';
 
-declare var Plotly: any;
+declare let Plotly: any;
 
 @Component({
     selector: 'secat',
@@ -118,23 +118,22 @@ export class SecatComponent {
                 color: 'rgb(72,163,39)'
             }
         });
-        console.log(this.data);
         Plotly.newPlot(this.plotlyDiv.nativeElement, this.data, this.layout, {displayModeBar: false});
     }
 
     highestItem(question: any, current: number): boolean {
-        var records = [
+        let records = [
             question.strong_disagree.percent,
             question.disagree.percent,
             question.neutral.percent,
             question.agree.percent,
             question.strong_agree.percent
-        ]
-        records.sort(this.numberSort);
+        ];
+        records.sort(SecatComponent.numberSort);
         return records[0] == current;
     }
 
-    numberSort(a: number, b: number) {
+    static numberSort(a: number, b: number) {
         return b - a;
     }
 

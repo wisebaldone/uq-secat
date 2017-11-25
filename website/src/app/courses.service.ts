@@ -54,7 +54,6 @@ export class CoursesService {
     }
 
     announceNewCourse(course: string) {
-        console.log("Got: " + course);
         this.activeCourseSource.next(course);
     }
 }
