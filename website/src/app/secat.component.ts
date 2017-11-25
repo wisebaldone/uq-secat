@@ -28,8 +28,14 @@ export class SecatComponent {
         },
         yaxis: {
             rangemode: "nonnegative",
-            range: [0, 100],
-            autorange: false
+            range: [0, 101],
+            autorange: false,
+            gridcolor: "#FF87B7"
+        },
+        paper_bgcolor: "#303030",
+        plot_bgcolor: "#303030",
+        font: {
+            color: "#fff"
         }
     };
 

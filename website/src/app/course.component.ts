@@ -17,7 +17,7 @@ export class CourseComponent {
     courseCode: string = "";
     courseDescription: string = "";
     secats: Course[] = [];
-    courseName: string = "HELLO";
+    courseName: string = "Type a course code above.";
 
     constructor(private coursesService: CoursesService) {
         coursesService.activeCourse.subscribe(courseCode => {
