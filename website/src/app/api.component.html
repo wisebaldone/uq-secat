@@ -1,10 +1,108 @@
 <div id="content" fxFlexAlign="center">
-  <div id="title">
-    <h2>Api</h2>
-  </div>
-  <div id="text">
-    <p>
-      Hello world, this is me, life should be, fun for everyone. Life is easy if you wear a smile, just be yourself don't ever change your style.
-    </p>
-  </div>
+    <div id="title">
+        <h2>Api</h2>
+    </div>
+    <div id="text">
+        <h3>Methodology</h3>
+        <p>
+            The project was always meant to be a statically served single page web app so the api had to rely on served
+            json files. To search for a courses stats you first load up the courses.json which contains a mapping of
+            each available course to the semesters and years that it was run. With this information you can then get
+            the data by using a http get of the form api/COURSECODE/YEAR/SEM.json.
+        </p>
+        <h3>Endpoints</h3>
+        <div class="code">
+            wisebaldone.github.io/uq-secat/api/courses.json
+        </div>
+        <p>
+            The courses endpoint is a little confusing to explain and is easier seen. Each course is in a dictionary
+            that contains a dictionary of the years which contain arrays of sems available.
+        </p>
+        <div class="code">
+            &#123;<br/>
+            &nbsp;COURSECODE: &#123;<br/>
+            &nbsp;&nbsp;YEAR: <span class="type">String[]</span> [<br/>
+            &nbsp;&nbsp;&nbsp;SEMESTERS... <span class="type">String</span><br/>
+            &nbsp;&nbsp;&nbsp;]<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;CSSE2010: &#123;<br/>
+            &nbsp;&nbsp;2014: [<br/>
+            &nbsp;&nbsp;&nbsp;"1"<br/>
+            &nbsp;&nbsp;&nbsp;],<br/>
+            &nbsp;&nbsp;2015: [<br/>
+            &nbsp;&nbsp;&nbsp;"1"<br/>
+            &nbsp;&nbsp;&nbsp;],<br/>
+            &nbsp;&nbsp;2016: [<br/>
+            &nbsp;&nbsp;&nbsp;"1"<br/>
+            &nbsp;&nbsp;&nbsp;],<br/>
+            &nbsp;&nbsp;2017: [<br/>
+            &nbsp;&nbsp;&nbsp;"1"<br/>
+            &nbsp;&nbsp;&nbsp;]<br/>
+            &nbsp;&#125;<br/>
+            &#125;
+        </div>
+        <br>
+        <div class="divider"></div>
+        <br>
+        <div class="code">
+            wisebaldone.github.io/uq-secat/api/<span class="changing">COURSE_CODE</span>/<span
+                class="changing">YEAR</span>/<span class="changing">SEM</span>.json
+        </div>
+        <p>
+            Once the course code, year and semester are known, then the data can be collected using the route above and
+            returns a structure as below.
+        </p>
+        <div class="code">
+            &#123;<br/>
+            &nbsp;course: <span class="type">String</span>,<br/>
+            &nbsp;description: <span class="type">String</span>,<br/>
+            &nbsp;year: <span class="type">String</span>,<br/>
+            &nbsp;enrolled: <span class="type">Integer</span>,<br/>
+            &nbsp;responses: <span class="type">Integer</span>,<br/>
+            &nbsp;rate: <span class="type">String</span>,<br/>
+            &nbsp;semester: <span class="type">Integer</span>, <span class="comment">//[1 => sem 1, 2 => sem 2, 3 => summer]</span><br/>
+            &nbsp;q1: &#123;<br/>
+            &nbsp;&nbsp;description: <span class="type">String</span>,<br/>
+            &nbsp;&nbsp;strong_agree: &#123;<br/>
+            &nbsp;&nbsp;&nbsp;value: <span class="type">Integer</span>,<br/>
+            &nbsp;&nbsp;&nbsp;total: <span class="type">Integer</span>,<br/>
+            &nbsp;&nbsp;&nbsp;percent: <span class="type">Float</span><br/>
+            &nbsp;&nbsp;&#125;,<br/>
+            &nbsp;&nbsp;agree: &#123;<br/>
+            &nbsp;&nbsp;&nbsp;...<br/>
+            &nbsp;&nbsp;&#125;,<br/>
+            &nbsp;&nbsp;neutral: &#123;<br/>
+            &nbsp;&nbsp;&nbsp;...<br/>
+            &nbsp;&nbsp;&#125;,<br/>
+            &nbsp;&nbsp;disagree: &#123;<br/>
+            &nbsp;&nbsp;&nbsp;...<br/>
+            &nbsp;&nbsp;&#125;,<br/>
+            &nbsp;&nbsp;strong_disagree: &#123;<br/>
+            &nbsp;&nbsp;&nbsp;...<br/>
+            &nbsp;&nbsp;&#125;<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q2: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q3: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q4: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q5: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q6: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q7: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;,<br/>
+            &nbsp;q8: &#123;<br/>
+            &nbsp;&nbsp;...<br/>
+            &nbsp;&#125;<br/>
+            &#125;
+        </div>
+    </div>
 </div>

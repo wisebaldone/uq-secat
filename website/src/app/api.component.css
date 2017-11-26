@@ -1,7 +1,7 @@
 #content {
     max-width: 800px;
-    margin: 80px auto auto;
     background-color: #4f4f4f;
+    margin: 80px auto 40px;
 }
 
 #title {
@@ -11,4 +11,29 @@
 
 #text {
     padding: 20px;
+}
+
+.code {
+    background-color: #1a1a1a;
+    font-family: "Source Code Pro", monospace;
+    padding: 5px 10px 5px 10px;
+}
+
+.changing {
+    color: #4c91d6;
+}
+
+.type {
+    color: #f96050;
+}
+
+.comment {
+    color: #4c91d6;
+}
+
+.divider {
+    margin: 20px 0 20px 0;
+    height: 2px;
+    width: 100%;
+    background-color: #212121;
 }
