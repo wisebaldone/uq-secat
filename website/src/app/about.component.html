@@ -3,8 +3,40 @@
     <h2>About</h2>
   </div>
   <div id="text">
+    <h3>What?</h3>
     <p>
-      Hello world, this is me, life should be, fun for everyone. Life is easy if you wear a smile, just be yourself don't ever change your style.
+      This website is an information dump for the collection of Student Evaluations of Course and Teachers at the
+      University of Queensland. The course information is made public to students <a
+            href="http://itali.uq.edu.au/content/student-evaluation-of-course-and-teaching-secat-results">here</a> while
+      teacher evaluations are kept private to the university.
+    </p>
+    <h3>Why?</h3>
+    <p>
+      The viewer for the results that the univeristy host's is pretty janky and takes forever to get to the course you'd
+      like to view. This website was made as a portfolio piece to show an alternate way of accessing the information.
+    </p>
+    <h3>Who?</h3>
+    <p>
+      My name is Evan Hughes i'm a Engineer & Science undergrad at UQ studying Electrical & Computer Engineering and
+      Computer Science. See <a href="https://www.wisebaldone.com">www.wisebaldone.com</a> for more of my work or more
+      about me.
+    </p>
+    <h3>How?</h3>
+    <p>
+      The project gathers no data of its own and collects it all from the
+      <a href="http://itali.uq.edu.au/content/student-evaluation-of-course-and-teaching-secat-results">
+        offical UQ page
+      </a>
+      where it is skimmed using a python script found <a
+            href="https://github.com/wisebaldone/uq-secat/tree/master/scrapper">here</a>. The scrapper itself uses
+      slenium due to the target website having a internal state machine for display information. This made it
+      difficult to use some http posts to get the information. Instead the skimmer manually browses every page for
+      every course. A json file is output for each semester the course has results and a sudo static
+      api is formed which is explained more on the api portion of the site.
+    </p>
+    <p>
+      Finally a Angular ( v2 ) website is built around the api to display the information using plot.ly for the graphs
+      and angular material for the UI design.
     </p>
   </div>
 </div>

@@ -1,5 +1,5 @@
 #content {
-    max-width: 600px;
+    max-width: 800px;
     margin: 80px auto auto;
     background-color: #4f4f4f;
 }
@@ -11,4 +11,13 @@
 
 #text {
     padding: 20px;
+}
+
+#text > p > a {
+    color: #ff94c1;
+}
+
+#text > p > a:hover {
+    color: #ff94c1;
+    text-decoration: none;
 }
