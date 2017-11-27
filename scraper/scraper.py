@@ -9,9 +9,9 @@ import os
 
 from course_description import CourseDescription
 
-print("UQ-SECAT Scrapper\n"
+print("UQ-SECAT Scraper\n"
       "-----------------")
-print("Please Do not Run this aggressivly\n")
+print("Please Do not Run this aggressively\n")
 print("Loading WebBrowser...")
 
 driver = webdriver.Chrome('./chromedriver')
@@ -83,7 +83,7 @@ for level1 in range(0, level1_num):
                 f.close()
 
             lowest_counter += 1
-    # INTERNETS DODGY SO LETS DO A LETTER AT A TIME
+    # INTERNET'S DODGY SO LETS DO A LETTER AT A TIME
     #break
 time.sleep(5)
 print("Closing Web Browser")
