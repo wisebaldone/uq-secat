@@ -1,4 +1,4 @@
-# UQ-Secat
+# UQ-SECaT
 
 A place to See Cats also known as Student Evaluation of Courses and Teachers. A portfolio puff piece by Evan Hughes, 
 not affiliated with the University of Queensland in Australia. 
